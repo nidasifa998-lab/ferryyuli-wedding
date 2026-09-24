@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fery & Yuli - 15.10.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<style>
+:root{--sage:#8a9a7b;--cream:#fdf8f3}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);font-family:'Montserrat',sans-serif;color:#333}
+.cover{height:100vh;width:100%;position:fixed;z-index:99;top:0;left:0;transition:1.2s;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
+.cover-bg{position:absolute;inset:0;overflow:hidden}
+.cover-bg img{width:100%;height:100%;object-fit:cover;animation:zoom 20s infinite alternate}
+.cover::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45)}
+.cover div{position:relative;z-index:2}
+.cover h1{font-family:'Allura',cursive;font-size:80px}
+.btn{padding:14px 35px;background:white;color:var(--sage);border-radius:50px;text-decoration:none;font-size:12px;letter-spacing:2px;display:inline-block;margin-top:20px}
+.cover.hide{transform:translateY(-100%)}
+@keyframes zoom{to{transform:scale(1.2)}}
+.slide{position:relative;width:100%;max-width:380px;margin:25px auto;height:460px;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.15)}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:2s}
+.slide img.active{opacity:1;transform:scale(1.05)}
+section{padding:75px 24px;max-width:600px;margin:auto;text-align:center}
+.script{font-family:'Allura',cursive;font-size:55px;color:var(--sage)}
+.title{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300}
+.line{width:45px;height:1px;background:var(--sage);margin:20px auto}
+.card{background:white;border-radius:24px;padding:35px;box-shadow:0 10px 30px rgba(0,0,0,0.05)}
+</style>
+</head>
+<body>
+<div class="cover" id="cover">
+<div class="cover-bg"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800"></div>
+<div><p style="letter-spacing:5px;font-size:10px">THE WEDDING OF</p><h1>Fery<br>& Yuli</h1><p style="letter-spacing:3px">13.10.2026</p><a class="btn" href="#" onclick="document.getElementById('cover').classList.add('hide');return false">BUKA UNDANGAN</a></div>
+</div>
+<section>
+<p style="letter-spacing:4px;font-size:10px">WE ARE GETTING MARRIED</p>
+<div class="line"></div>
+<div class="slide" id="s">
+<img src="https://images.unsplash.com/photo-1520854221256-17451ccdf07b?q=80&w=600" class="active">
+<img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600">
+<img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600">
+</div>
+<div class="script">Fery & Yuli</div>
+<p style="font-size:12px;opacity:0.6">Kamis, 15 Oktober 2026 • Subang, Jawa Barat</p>
+</section>
+<section style="background:white">
+<div class="title">Save The Date</div>
+<div id="timer" style="display:flex;gap:8px;justify-content:center;margin:25px 0"></div>
+<div class="card">
+<p style="letter-spacing:3px;font-size:10px">AKAD & RESEPSI</p>
+<h2 style="font-family:'Cormorant Garamond';font-size:26px;margin:12px 0">Kamis, 15 Oktober 2026</h2>
+<p>10.00 WIB - Selesai</p>
+<p style="margin-top:15px;font-size:13px;opacity:0.7">Kediaman Mempelai Wanita<br>Kab. Subang, Jawa Barat</p>
+<a class="btn" style="background:var(--sage);color:white" href="https://maps.google.com" target="_blank">Buka Maps</a>
+</div>
+</section>
+<section><div class="script">Terima Kasih</div><p style="font-size:13px;opacity:0.7;margin-top:10px">Merupakan kebahagiaan bagi kami apabila Bapak/Ibu berkenan hadir</p><p style="font-family:'Allura';font-size:35px;margin-top:30px;color:var(--sage)">Fery & Yuli</p></section>
+<script>
+let i=0,imgs=document.querySelectorAll('#s img');
+setInterval(()=>{imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active')},3000);
+const t=new Date("Oct 13, 2026 10:00:00").getTime();
+setInterval(()=>{let d=t-Date.now();let h=Math.floor(d/86400000),j=Math.floor(d%86400000/3600000),m=Math.floor(d%3600000/60000),s=Math.floor(d%60000/1000);document.getElementById("timer").innerHTML=`<div style="background:white;padding:12px 16px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,0.05)"><b style="color:var(--sage)">${h}</b><br><span style="font-size:9px">HARI</span></div><div style="background:white;padding:12px 16px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,0.05)"><b style="color:var(--sage)">${j}</b><br><span style="font-size:9px">JAM</span></div><div style="background:white;padding:12px 16px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,0.05)"><b style="color:var(--sage)">${m}</b><br><span style="font-size:9px">MENIT</span></div><div style="background:white;padding:12px 16px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,0.05)"><b style="color:var(--sage)">${s}</b><br><span style="font-size:9px">DETIK</span></div>`},1000);
+</script>
+</body>
+  </html>
