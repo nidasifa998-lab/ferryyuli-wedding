@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fery & Yuli - 15.10.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital@1&family=Allura&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fdf8f0;overflow:hidden}
+.slider{width:100%;height:100vh;position:relative}
+.slide{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:#fdf8f0}
+.slide.active{display:flex}
+.card{width:100%;max-width:380px;background:#fffdf8;border-radius:28px;padding:24px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.07);border:1.5px solid rgba(90,122,154,.15)}
+.sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:#5a7a9a;font-size:22px}
+.initials{font-family:'Great Vibes',cursive;font-size:84px;color:#5a7a9a;margin:10px 0;line-height:.85}
+.btn{border:1.5px solid #5a7a9a;border-radius:30px;padding:11px 26px;background:#fff;color:#5a7a9a;display:inline-flex;gap:7px;cursor:pointer;margin-top:18px;font-family:'Allura',cursive;font-size:19px;text-decoration:none}
+.nav{position:fixed;bottom:18px;left:0;right:0;display:flex;gap:8px;justify-content:center}
+.dot{width:8px;height:8px;background:#ccc;border-radius:50%}.dot.active{background:#5a7a9a;width:24px}
+.arrow{position:fixed;top:50%;background:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 15px rgba(0,0,0,.1);cursor:pointer}
+.arrow.left{left:12px}.arrow.right{right:12px}
+</style>
+</head>
+<body>
+<div class="slider">
+<div class="slide active"><div class="card">
+<div style="color:#5a7a9a">🌿💙🌸💙🌿</div>
+<div class="sub">Undangan pernikahan</div>
+<div class="initials">F y</div>
+<div style="letter-spacing:3px;font-weight:600;color:#5a7a9a">15 - 10 - 2026</div>
+<div style="font-size:10px;opacity:.5;margin-top:6px">Kp. Panembong Rt03/Rw01 Kec. Kasomalang Kab. Subang</div>
+<div class="btn" onclick="next()">✉️ Buka undangan</div>
+<div style="margin-top:12px;color:#5a7a9a">🌿💙🌸💙🌿</div>
+</div></div>
+<div class="slide"><div class="card"><p style="letter-spacing:3px;font-size:10px">MEMPELAI</p><div style="font-family:'Allura';font-size:52px;color:#5a7a9a;margin:12px 0">Ferry Apriana & Yuli Wulansari</div><p style="font-size:12px;opacity:.6">Dengan memohon Rahmat Allah SWT</p></div></div>
+<div class="slide"><div class="card"><p style="letter-spacing:3px;font-size:10px">TANGGAL</p><h2 style="font-family:'Cormorant Garamond';font-size:30px;margin:14px 0">15 Oktober 2026<br>08.00 WIB</h2><p style="font-size:11px;opacity:.6">Kediaman Mempelai Pria, Subang</p><a class="btn" style="font-family:sans-serif;font-size:12px" href="https://maps.google.com" target="_blank">📍 Buka Maps</a></div></div>
+<div class="slide"><div class="card"><div class="sub">Terima Kasih</div><p style="font-size:13px;opacity:.7;margin-top:12px;line-height:1.6">Merupakan kebahagiaan bagi kami apabila berkenan hadir & memberikan doa restu</p><div style="font-family:'Great Vibes';font-size:44px;color:#5a7a9a;margin-top:24px">F & Y</div><p style="font-size:10px;letter-spacing:4px;opacity:.4;margin-top:10px">15 • 10 • 2026</p></div></div>
+</div>
+<div class="arrow left" onclick="prev()">‹</div><div class="arrow right" onclick="next()">›</div><div class="nav" id="nav"></div>
+<script>
+let cur=0,all=document.querySelectorAll('.slide');
+function build(){let h='';for(let i=0;i<all.length;i++)h+=`<div class="dot ${i==0?'active':''}" onclick="go(${i})"></div>`;document.getElementById('nav').innerHTML=h}
+function go(n){all[cur].classList.remove('active');cur=n;if(cur<0)cur=all.length-1;if(cur>=all.length)cur=0;all[cur].classList.add('active');document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i==cur))}
+function next(){go(cur+1)}function prev(){go(cur-1)}build();
+let sx=0;addEventListener('touchstart',e=>sx=e.touches[0].clientX);addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-sx;if(dx<-50)next();if(dx>50)prev()});
+</script>
+</body>
+</html>
